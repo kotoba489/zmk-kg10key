@@ -10,7 +10,6 @@
         compatible = "zmk,matrix-transform";
         columns = <3>;
         rows = <4>;
-        /* 左列(Col0)は4段(7,4,1,0)、中・右列は3段の設計通りに配置 */
         map = <
             RC(0,0) RC(0,1) RC(0,2)
             RC(1,0) RC(1,1) RC(1,2)
@@ -27,7 +26,7 @@
         col-gpios
             = <&xiao_d 4 GPIO_ACTIVE_HIGH>
             , <&xiao_d 5 GPIO_ACTIVE_HIGH>
-            , <&xiao_d 10 GPIO_ACTIVE_HIGH>
+            , <&xiao_d 11 GPIO_ACTIVE_HIGH>  /* D10からD11へ修正 */
             ;
 
         row-gpios
