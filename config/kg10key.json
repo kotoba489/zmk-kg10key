@@ -1,6 +1,15 @@
-[
-    {"label":"7", "x":0, "y":0, "row":0, "col":0}, {"label":"8", "x":1, "y":0, "row":0, "col":1}, {"label":"9", "x":2, "y":0, "row":0, "col":2}, {"label":"MCU", "x":3, "y":0, "w":1, "h":2},
-    {"label":"4", "x":0, "y":1, "row":1, "col":0}, {"label":"5", "x":1, "y":1, "row":1, "col":1}, {"label":"6", "x":2, "y":1, "row":1, "col":2},
-    {"label":"1", "x":0, "y":2, "row":2, "col":0}, {"label":"2", "x":1, "y":2, "row":2, "col":1}, {"label":"3", "x":2, "y":2, "row":2, "col":2}, {"label":"BATT", "x":3, "y":2, "w":1, "h":2},
-    {"label":"0", "x":0, "y":3, "row":3, "col":0}, {"label":"Enc", "x":1, "y":3, "w":2, "row":3, "col":1}
-]
+{
+    "keyboard_name": "kg10key",
+    "url": "",
+    "maintainer": "me",
+    "layouts": {
+        "LAYOUT": {
+            "layout": [
+                {"label":"D1", "x":0, "y":0}, {"label":"D2", "x":1, "y":0}, {"label":"D3", "x":2, "y":0},
+                {"label":"D4", "x":0, "y":1}, {"label":"D5", "x":1, "y":1}, {"label":"D6", "x":2, "y":1},
+                {"label":"D7", "x":0, "y":2}, {"label":"D8", "x":1, "y":2}, {"label":"D9", "x":2, "y":2},
+                {"label":"D10", "x":0, "y":3}, {"label":"D11", "x":2, "y":3}
+            ]
+        }
+    }
+}
