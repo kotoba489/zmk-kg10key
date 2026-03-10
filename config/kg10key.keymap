@@ -13,24 +13,24 @@
         compatible = "zmk,keymap";
 
         default_layer {
-            // 図解 [2026-03-10 23.22.19] に完全準拠
+            // 図解 [2026-03-10 23.22.19] の並び順
             bindings = <
-&kp N0    &none     &none     // 1行目：0
-&kp N7    &kp N8    &kp N9    // 2行目：7, 8, 9
-&kp N4    &kp N5    &kp N6    // 3行目：4, 5, 6
-&kp N1    &kp N2    &kp N3    // 4行目：1, 2, 3
+&kp N0    &none     &none     // 1段目：左に0、右側はマシンスペース（空き）
+&kp N7    &kp N8    &kp N9    // 2段目
+&kp N4    &kp N5    &kp N6    // 3段目
+&kp N1    &kp N2    &kp N3    // 4段目
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
         layer_1 {
-            // レイヤー1：FCP編集やBT管理（ブートローダーは削除）
+            // レイヤー1：FCP編集補助・設定用
             bindings = <
 &none         &none         &none
-&bt BT_SEL 0  &bt BT_SEL 1  &bt BT_CLR  // Bluetooth切り替え
-&kp BSPC      &kp ENTER     &kp TAB     // 編集でよく使うキー
-&kp LSHFT     &none         &mo 1       // 3の横をレイヤー切り替えに
+&bt BT_SEL 0  &bt BT_SEL 1  &bt BT_CLR  // BT切り替えなど
+&kp BSPC      &kp ENTER     &kp TAB     // 編集で多用するキー
+&kp LSHFT     &none         &mo 1       // 「3」の横をレイヤー切り替えに
             >;
 
             sensor-bindings = <&inc_dec_kp PG_UP PG_DN>;
