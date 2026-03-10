@@ -7,9 +7,9 @@
     };
 };
 
+/* エンコーダー設定：最新の配線(9番=A, 10番=B)を反映 */
 &encoder {
     status = "okay";
-    /* A相を10番(D9)、B相を9番(D8)に設定 */
-    a-gpios = <&xiao_d 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-    b-gpios = <&xiao_d 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+    a-gpios = <&xiao_d 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+    b-gpios = <&xiao_d 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
 };
