@@ -1,8 +1,19 @@
-keymap {
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/outputs.h>
+
+/ {
+    sensors {
+        compatible = "zmk,keymap-sensors";
+        sensors = <&encoder>;
+        triggers-per-rotation = <20>;
+    };
+
+    keymap {
         compatible = "zmk,keymap";
 
         default_layer {
-            /* ここに LAYOUT を追記 */
             display-name = "Base";
             bindings = <
                 &kp KP_N7    &kp KP_N8    &kp KP_N9
@@ -10,6 +21,7 @@ keymap {
                 &kp KP_N1    &kp KP_N2    &kp KP_N3
                 &kp KP_N0                 &kp KP_DOT
             >;
-            /* ...以下、sensor-bindingsなど... */
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
     };
+};
