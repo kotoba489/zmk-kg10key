@@ -26,7 +26,7 @@
         col-gpios
             = <&xiao_d 4 GPIO_ACTIVE_HIGH>
             , <&xiao_d 5 GPIO_ACTIVE_HIGH>
-            , <&xiao_d 11 GPIO_ACTIVE_HIGH>  /* D10からD11へ修正 */
+            , <&gpio0 2 GPIO_ACTIVE_HIGH>  /* XIAOのD11(P0.02)を直接指定 */
             ;
 
         row-gpios
