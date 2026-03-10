@@ -10,12 +10,13 @@
         compatible = "zmk,matrix-transform";
         columns = <3>;
         rows = <4>;
-        // 物理的な10個のスイッチ配置を定義
+        /* 11個のスイッチ配置（D1〜D11）を定義 */
+        /* ダイオード2, 3の追加を反映し、12個目の枠(RC(3,1))は空きにします */
         map = <
-            RC(0,0) RC(0,1) RC(0,2)
-            RC(1,0) RC(1,1) RC(1,2)
-            RC(2,0) RC(2,1) RC(2,2)
-            RC(3,0)         RC(3,2)
+            RC(0,0) RC(0,1) RC(0,2)  /* D1, D2, D3 */
+            RC(1,0) RC(1,1) RC(1,2)  /* D4, D5, D6 */
+            RC(2,0) RC(2,1) RC(2,2)  /* D7, D8, D9 */
+            RC(3,0)         RC(3,2)  /* D10, (空き), D11 */
         >;
     };
 
@@ -24,28 +25,27 @@
         label = "KSCAN";
         diode-direction = "col2row";
 
-        /* 列（Column）のピン指定 */
+        /* 最新図面に基づいた列（Column）ピン: D4, D5, D10 */
         col-gpios
-            = <&xiao_d 0 GPIO_ACTIVE_HIGH>
-            , <&xiao_d 1 GPIO_ACTIVE_HIGH>
-            , <&xiao_d 2 GPIO_ACTIVE_HIGH>
+            = <&xiao_d 4 GPIO_ACTIVE_HIGH>
+            , <&xiao_d 5 GPIO_ACTIVE_HIGH>
+            , <&xiao_d 10 GPIO_ACTIVE_HIGH>
             ;
 
-        /* 行（Row）のピン指定 */
+        /* 最新図面に基づいた行（Row）ピン: D0, D1, D2, D3 */
         row-gpios
-            = <&xiao_d 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&xiao_d 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&xiao_d 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&xiao_d 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            = <&xiao_d 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&xiao_d 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&xiao_d 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&xiao_d 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             ;
     };
 
-    /* エンコーダーの宣言 */
     encoder: encoder {
         compatible = "alps,ec11";
         label = "ENCODER";
         #sensor-cells = <0>;
         resolution = <4>;
-        status = "disabled";
+        status = "okay"; /* 有効化 */
     };
 };
