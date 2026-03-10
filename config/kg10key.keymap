@@ -1,13 +1,15 @@
-[
-    {"label":"7", "x":0, "y":0, "row":0, "col":0}, 
-    {"label":"8", "x":1, "y":0, "row":0, "col":1}, 
-    {"label":"9", "x":2, "y":0, "row":0, "col":2},
-    {"label":"4", "x":0, "y":1, "row":1, "col":0}, 
-    {"label":"5", "x":1, "y":1, "row":1, "col":1}, 
-    {"label":"6", "x":2, "y":1, "row":1, "col":2},
-    {"label":"1", "x":0, "y":2, "row":2, "col":0}, 
-    {"label":"2", "x":1, "y":2, "row":2, "col":1}, 
-    {"label":"3", "x":2, "y":2, "row":2, "col":2},
-    {"label":"0", "x":0, "y":3, "row":3, "col":0}, 
-    {"label":"Enc", "x":1, "y":3, "w":2, "row":3, "col":1}
-]
+#include "kg10key.dtsi"
+
+/ {
+    chosen {
+        zmk,kscan = &kscan0;
+        zmk,matrix-transform = &default_transform;
+    };
+};
+
+/* エンコーダー設定：最新の配線(9番=A, 10番=B)を反映 */
+&encoder {
+    status = "okay";
+    a-gpios = <&xiao_d 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+    b-gpios = <&xiao_d 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+};
