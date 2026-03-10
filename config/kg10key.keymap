@@ -15,19 +15,23 @@
         compatible = "zmk,keymap";
 
         default_layer {
-            /* 配線図に基づき、ダイオード番号をキーに割り当て */
-            /* 17, 18は削除され、2, 3が追加された状態を反映 */
+            /* * RC(0,0) RC(0,1) RC(0,2)  => D1, D2, D3
+             * RC(1,0) RC(1,1) RC(1,2)  => D4, D5, D6
+             * RC(2,0) RC(2,1) RC(2,2)  => D7, D8, D9
+             * RC(3,0)         RC(3,2)  => D10, (空き), D11
+             */
             bindings = <
                 &kp KP_N7    &kp KP_N8    &kp KP_N9    /* D1, D2, D3 */
                 &kp KP_N4    &kp KP_N5    &kp KP_N6    /* D4, D5, D6 */
                 &kp KP_N1    &kp KP_N2    &kp KP_N3    /* D7, D8, D9 */
-                &kp KP_N0    &kp KP_DOT   &kp KP_ENTER /* D10, D11, D12 */
-                &kp BSPC     &kp ESC      &kp TAB      /* D13, D14, D15 */
-                &kp LSHIFT   &none        &none        /* D16, (D17, D18は削除) */
+                &kp KP_N0                 &kp KP_DOT   /* D10, (空き), D11 */
             >;
 
-            /* エンコーダー：右回しで音量アップ、左回しでダウンの例 */
+            /* エンコーダー設定 */
+            /* 右回し：音量アップ、左回し：音量ダウン */
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
+
+        /* 必要に応じてBT切り替えなどのレイヤーを後で追加可能です */
     };
 };
