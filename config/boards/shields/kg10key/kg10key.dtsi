@@ -26,7 +26,7 @@
         col-gpios
             = <&xiao_d 4 GPIO_ACTIVE_HIGH>
             , <&xiao_d 5 GPIO_ACTIVE_HIGH>
-            , <&gpio0 2 GPIO_ACTIVE_HIGH>  /* XIAOのD11(P0.02)を直接指定 */
+            , <&gpio0 2 GPIO_ACTIVE_HIGH>  /* XIAO D11 */
             ;
 
         row-gpios
@@ -35,13 +35,5 @@
             , <&xiao_d 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             , <&xiao_d 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             ;
-    };
-
-    encoder: encoder {
-        compatible = "alps,ec11";
-        label = "ENCODER";
-        #sensor-cells = <0>;
-        resolution = <4>;
-        status = "okay";
     };
 };
