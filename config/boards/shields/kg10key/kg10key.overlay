@@ -7,9 +7,7 @@
     };
 };
 
-/* エンコーダー設定：最新の配線(9番=A, 10番=B)を反映 */
-&encoder {
-    status = "okay";
-    a-gpios = <&xiao_d 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-    b-gpios = <&xiao_d 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-};
+/* * エンコーダーの物理ピン定義は、ビルドエラー回避のため 
+ * kg10key.keymap 側へ集約しました。
+ * ここでは追加の設定は不要です。
+ */
