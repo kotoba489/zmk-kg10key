@@ -1,0 +1,27 @@
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+
+/ {
+    keymap {
+        compatible = "zmk,keymap";
+
+        /* 画像：スクリーンショット 2026-03-16 19.29.07.png の再現 */
+        default_layer {
+            bindings = <
+                &kp LS(LG(RA(N4))) &kp D &kp E    &kp U    &kp COMMA &kp H &kp S &kp Y &kp R &kp B
+                &kp Z              &kp J &kp I    &kp A    &kp O     &kp K &kp N &kp T &kp W &kp P
+                &kp Q              &kp X &kp C    &kp V    &kp DOT   &kp G &kp M &kp F &kp MINUS &kp L
+                &mo 1              &kp LSHIFT &kp LA(LC(SPACE)) &kp LGUI &kp RA(MINUS) &kp SPACE &kp ENTER &kp BSPC &kp RA(BSPC) &kp RA(LC(MINUS))
+            >;
+        };
+
+        layer_1 {
+            bindings = <
+                &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
+                &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
+                &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
+                &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
+            >;
+        };
+    };
+};
