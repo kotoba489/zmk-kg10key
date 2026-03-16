@@ -13,16 +13,26 @@
         label = "KSCAN";
         diode-direction = "col2row";
 
+        /* 設計図のROW0〜ROW3（ピン5, 6, 7, 8）に対応 */
         row-gpios
-            = <&pro_micro 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&pro_micro 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            = <&pro_micro 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* ROW0 (Pin 5) */
+            , <&pro_micro 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* ROW1 (Pin 6) */
+            , <&pro_micro 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* ROW2 (Pin 7) */
+            , <&pro_micro 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* ROW3 (Pin 8) */
             ;
 
+        /* 設計図のCOL0〜COL9（ピン9, 10, 11, 12, 18, 19, 20, 21, 22, 23）に対応 */
         col-gpios
-            = <&pro_micro 6 GPIO_ACTIVE_HIGH>
-            , <&pro_micro 7 GPIO_ACTIVE_HIGH>
-            , <&pro_micro 8 GPIO_ACTIVE_HIGH>
-            , <&pro_micro 9 GPIO_ACTIVE_HIGH>
+            = <&pro_micro 4  GPIO_ACTIVE_HIGH> /* COL0 (Pin 9) */
+            , <&pro_micro 5  GPIO_ACTIVE_HIGH> /* COL1 (Pin 10) */
+            , <&pro_micro 6  GPIO_ACTIVE_HIGH> /* COL2 (Pin 11) */
+            , <&pro_micro 7  GPIO_ACTIVE_HIGH> /* COL3 (Pin 12) */
+            , <&pro_micro 15 GPIO_ACTIVE_HIGH> /* COL4 (Pin 18) */
+            , <&pro_micro 18 GPIO_ACTIVE_HIGH> /* COL5 (Pin 19) */
+            , <&pro_micro 19 GPIO_ACTIVE_HIGH> /* COL6 (Pin 20) */
+            , <&pro_micro 20 GPIO_ACTIVE_HIGH> /* COL7 (Pin 21) */
+            , <&pro_micro 21 GPIO_ACTIVE_HIGH> /* COL8 (Pin 22) */
+            , <&pro_micro 10 GPIO_ACTIVE_HIGH> /* COL9 (Pin 23) */
             ;
     };
 };
