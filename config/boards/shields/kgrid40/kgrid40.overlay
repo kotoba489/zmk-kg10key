@@ -1,6 +1,12 @@
 / {
     chosen {
         zmk,kscan = &kscan0;
+        zmk,keymap = &keymap;  /* この一行を追加 */
+    };
+
+    /* keymapノードのラベルを定義（中身は空でOK） */
+    keymap: keymap {
+        compatible = "zmk,keymap";
     };
 
     kscan0: kscan {
