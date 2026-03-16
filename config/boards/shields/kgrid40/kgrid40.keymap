@@ -1,13 +1,28 @@
 / {
     chosen {
         zmk,kscan = &kscan0;
-        zmk,keymap = &keymap;  /* この一行を追加 */
+        zmk,keymap = &keymap;
     };
 
-    /* ...以下の kscan0 定義などはそのまま... */
-};
+    keymap: keymap {
+        compatible = "zmk,keymap";
+    };
 
-/* ファイルの最後（ }; の外側）にこれを追記 */
-&keymap {
-    compatible = "zmk,keymap";
+    kscan0: kscan {
+        compatible = "zmk,kscan-gpio-matrix";
+        label = "KSCAN";
+        diode-direction = "col2row";
+
+        row-gpios
+            = <&pro_micro 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&pro_micro 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            ;
+
+        col-gpios
+            = <&pro_micro 6 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 7 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 8 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 9 GPIO_ACTIVE_HIGH>
+            ;
+    };
 };
