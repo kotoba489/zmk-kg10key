@@ -1,15 +1,13 @@
-#include <behaviors.dtsi>
-#include <dt-bindings/zmk/keys.h>
-
 / {
-    keymap {
-        compatible = "zmk,keymap";
-
-        default_layer {
-            bindings = <
-                &kp A &kp B &kp C &kp D
-                &kp E &kp F &kp G &kp H
-            >;
-        };
+    chosen {
+        zmk,kscan = &kscan0;
+        zmk,keymap = &keymap;  /* この一行を追加 */
     };
+
+    /* ...以下の kscan0 定義などはそのまま... */
+};
+
+/* ファイルの最後（ }; の外側）にこれを追記 */
+&keymap {
+    compatible = "zmk,keymap";
 };
