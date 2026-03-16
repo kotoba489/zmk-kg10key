@@ -1,4 +1,4 @@
-name: Build kg10key
+name: Build kg10key and kgrid40
 
 on: [push, pull_request, workflow_dispatch]
 
@@ -38,8 +38,16 @@ jobs:
         run: |
           rm -rf build
           west build -s zmk/app -b xiao_ble -- -DSHIELD=kg10key -DZMK_CONFIG="${GITHUB_WORKSPACE}/config"
-      - name: Rename UF2
+      - name: Rename kg10key UF2
         run: cp build/zephyr/zmk.uf2 kg10key.uf2
+
+      # kgrid40（新しい40%キーボード）のビルド
+      - name: West Build (kgrid40)
+        run: |
+          rm -rf build
+          west build -s zmk/app -b xiao_ble -- -DSHIELD=kgrid40 -DZMK_CONFIG="${GITHUB_WORKSPACE}/config"
+      - name: Rename kgrid40 UF2
+        run: cp build/zephyr/zmk.uf2 kgrid40.uf2
 
       # Settings Reset（ペアリング解除用）のビルド
       - name: West Build (Settings Reset)
@@ -53,7 +61,8 @@ jobs:
       - name: Archive artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: kg10key_firmware
+          name: zmk_firmware
           path: |
             kg10key.uf2
+            kgrid40.uf2
             settings_reset.uf2
