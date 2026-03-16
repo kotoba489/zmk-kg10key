@@ -9,9 +9,9 @@ jobs:
       image: zmkfirmware/zmk-build-arm:stable
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Cache west modules
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         env:
           cache-name: cache-zephyr-modules
         with:
@@ -33,14 +33,14 @@ jobs:
       - name: West Zephyr export
         run: west zephyr-export
       - name: West Build (kgrid40)
-        run: west build -s zmk/app -b nice_nano_v2 -- -DSHIELD=kgrid40 -DZMK_CONFIG="${GITHUB_WORKSPACE}/config"
+        run: west build -s zmk/app -b xiao_ble -- -DSHIELD=kgrid40 -DZMK_CONFIG="${GITHUB_WORKSPACE}/config"
       - name: Kgrid40 DTS File
         if: always()
         run: test -f build/zephyr/zmk.dts && cp build/zephyr/zmk.dts kgrid40.dts || true
       - name: Kgrid40 Artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
-          name: 'kgrid40_nice_nano_v2'
+          name: 'kgrid40_xiao_ble'
           path: |
             build/zephyr/zmk.uf2
             kgrid40.dts
