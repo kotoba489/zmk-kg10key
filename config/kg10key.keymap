@@ -30,7 +30,7 @@
         };
 
         layer_1 {
-            display-name = "Edit";
+            display-name = "FCP1";
             bindings = <
 &kp LG(LC(PLUS))  &kp LS(Z)  &kp LG(MINUS)
 &kp LEFT_ARROW    &none      &kp RIGHT_ARROW
@@ -48,6 +48,8 @@
 &tog 3  &tog 1  &tog 0
 &trans
             >;
+
+            label = "FCP2";
         };
 
         layer_3 {
@@ -57,6 +59,8 @@
 &trans        &trans        &tog 0
 &trans
             >;
+
+            label = "BT";
         };
     };
 };
