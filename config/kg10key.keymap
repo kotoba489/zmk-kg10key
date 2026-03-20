@@ -31,13 +31,22 @@
         layer_1 {
             display-name = "Edit";
             bindings = <
-&kp LG(MINUS)   &kp LS(Z)  &kp LG(PLUS)
-&kp LEFT_ARROW  &none      &kp RIGHT_ARROW
-&none           &kp SPACE  &tog 1
+&kp LG(LC(PLUS))  &kp LS(Z)  &kp LG(MINUS)
+&kp LEFT_ARROW    &none      &kp RIGHT_ARROW
+&tog 2            &kp SPACE  &tog 0
 &kp LEFT_SHIFT
             >;
 
             sensor-bindings = <&inc_dec_kp LS(LEFT) LS(RIGHT)>;
+        };
+
+        layer_2 {
+            bindings = <
+&trans  &trans  &trans
+&trans  &trans  &trans
+&trans  &tog 1  &tog 0
+&trans
+            >;
         };
     };
 };
