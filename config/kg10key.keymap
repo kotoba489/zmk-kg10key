@@ -4,8 +4,7 @@
 
 / {
     behaviors {
-        // 0.5秒（500ms）長押しでレイヤー1に切り替える設定
-
+        // 0.5秒長押しでレイヤー1をトグル(ON)する設定
         lt_3: layer_tap_3 {
             compatible = "zmk,behavior-hold-tap";
             label = "LAYER_TAP_3";
@@ -16,84 +15,33 @@
         };
     };
 
-    combos {
-        compatible = "zmk,combos";
-
-        del {
-            bindings = <&kp BACKSPACE>;
-            key-positions = <2 9>;
-        };
-
-        prd {
-            bindings = <&kp PERIOD>;
-            key-positions = <0 9>;
-        };
-
-        cmm {
-            bindings = <&kp COMMA>;
-            key-positions = <1 9>;
-        };
-
-        pls {
-            bindings = <&kp PLUS>;
-            key-positions = <9 3>;
-        };
-
-        mis {
-            bindings = <&kp MINUS>;
-            key-positions = <4 9>;
-        };
-
-        eel {
-            bindings = <&kp EQUAL>;
-            key-positions = <5 9>;
-        };
-    };
-
     keymap {
         compatible = "zmk,keymap";
 
-        // レイヤー0：通常の数字入力
-
+        // レイヤー0：数字入力
         default_layer {
             display-name = "Base";
             bindings = <
-&kp KP_N7  &kp KP_N8  &kp KP_N9
-&kp KP_N4  &kp KP_N5  &kp KP_N6
-&kp KP_N1  &kp KP_N2  &lt_3 1 KP_N3
-&kp KP_N0
+                &kp KP_N7     &kp KP_N8  &kp KP_N9
+                &kp KP_N4     &kp KP_N5  &kp KP_N6
+                &kp KP_N1     &kp KP_N2  &lt_3 1 KP_N3  // 0.5秒押しでVideoモードへ
+                &kp KP_N0     &none      &none
             >;
-
-            // レイヤー0のエンコーダー：スクロール
-
+            // 通常時のエンコーダー（スクロール）
             sensor-bindings = <&inc_dec_kp PG_UP PG_DN>;
         };
 
-        // レイヤー1：動画編集モード（Final Cut Pro用）
-
+        // レイヤー1：動画編集モード（Final Cut Pro）
         video_layer {
             display-name = "Video";
             bindings = <
-&kp LG(PLUS)    &kp LS(Z)  &kp LG(MINUS)
-&kp LEFT_ARROW  &none      &kp RIGHT_ARROW
-&tog 2          &kp SPACE  &tog 0
-&kp LSHFT
+                &trans        &trans     &trans
+                &trans        &trans     &trans
+                &trans        &trans     &tog 1         // もう一度押せばBaseに戻る
+                &trans        &trans     &trans
             >;
-
-            // レイヤー1のエンコーダー：10フレーム移動 (Shift + Arrow)
-
+            // 動画編集時のエンコーダー（10フレーム移動）
             sensor-bindings = <&inc_dec_kp LS(RIGHT) LS(LEFT)>;
-        };
-
-        layer_2 {
-            bindings = <
-&bt BT_SEL 0  &bt BT_SEL 1  &bt BT_CLR_ALL
-&trans        &trans        &trans
-&trans        &trans        &tog 0
-&trans
-            >;
-
-            label = "BT";
         };
     };
 };
