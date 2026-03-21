@@ -3,17 +3,6 @@
 #include <dt-bindings/zmk/keys.h>
 
 / {
-    behaviors {
-        lt3: layer_tap_3 {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <2000>;
-            quick-tap-ms = <0>;
-            bindings = <&tog>, <&kp>;
-        };
-    };
-
     keymap {
         compatible = "zmk,keymap";
 
@@ -22,7 +11,7 @@
             bindings = <
 &kp KP_N7  &kp KP_N8  &kp KP_N9
 &kp KP_N4  &kp KP_N5  &kp KP_N6
-&kp KP_N1  &kp KP_N2  &lt3 1 KP_N3
+&kp KP_N1  &kp KP_N2  &none
 &kp KP_N0
             >;
 
