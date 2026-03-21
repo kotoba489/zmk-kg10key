@@ -3,6 +3,17 @@
 #include <dt-bindings/zmk/keys.h>
 
 / {
+    /* 判定時間を 500ms(0.5秒) に設定するための定義 */
+    behaviors {
+        lt_prio: layer_tap_priority {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <500>;
+            flavor = "tap-preferred";
+            bindings = <&mo>, <&kp>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -11,7 +22,7 @@
             bindings = <
                 &kp KP_N7  &kp KP_N8     &kp KP_N9
                 &kp KP_N4  &kp KP_N5     &kp KP_N6
-                &kp KP_N1  &kp KP_N2     &lt 1 KP_N3  /* 短押しで3、長押しでレイヤー1へ */
+                &kp KP_N1  &kp KP_N2     &lt_prio 1 KP_N3 /* 0.5秒長押しでFCP1へ */
                 &kp KP_N0  &none         &none
             >;
 
@@ -23,7 +34,7 @@
             bindings = <
                 &kp LG(LC(PLUS))  &kp LS(Z)  &kp LG(MINUS)
                 &kp LEFT          &none      &kp RIGHT
-                &tog 2            &kp SPACE  &tog 0        /* ベースへ戻る */
+                &tog 2            &kp SPACE  &tog 0        /* Base(0)へ戻る */
                 &kp LEFT_SHIFT
             >;
             sensor-bindings = <&inc_dec_kp LS(LEFT) LS(RIGHT)>;
@@ -34,7 +45,7 @@
             bindings = <
                 &trans  &trans  &trans
                 &trans  &trans  &trans
-                &tog 3  &tog 1  &tog 0        /* ベースへ戻る */
+                &tog 3  &tog 1  &tog 0        /* Base(0)へ戻る */
                 &trans
             >;
         };
@@ -44,7 +55,7 @@
             bindings = <
                 &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_CLR_ALL
                 &trans        &trans        &trans
-                &trans        &trans        &tog 0        /* ベースへ戻る */
+                &trans        &trans        &tog 0        /* Base(0)へ戻る */
                 &trans
             >;
         };
