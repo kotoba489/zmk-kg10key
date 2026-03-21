@@ -11,10 +11,10 @@
         columns = <3>;
         rows = <4>;
         map = <
-            RC(0,0) RC(0,1) RC(0,2)  /* 7, 8, 9 (Row0) */
-            RC(1,0) RC(1,1) RC(1,2)  /* 4, 5, 6 (Row1) */
-            RC(2,0) RC(2,1) RC(2,2)  /* 1, 2, 3 (Row2) */
-                    RC(3,1)          /* 0       (Row3) */
+            RC(0,0) RC(0,1) RC(0,2)  /* 7, 8, 9 */
+            RC(1,0) RC(1,1) RC(1,2)  /* 4, 5, 6 */
+            RC(2,0) RC(2,1) RC(2,2)  /* 1, 2, 3 */
+                    RC(3,1)          /* 0       */
         >;
     };
 
@@ -24,15 +24,15 @@
         diode-direction = "col2row";
 
         col-gpios
-            = <&gpio0 4 GPIO_ACTIVE_HIGH>  /* D4 (左列) */
-            , <&gpio0 5 GPIO_ACTIVE_HIGH>  /* D5 (中列) */
-            , <&gpio0 30 GPIO_ACTIVE_HIGH> /* D6 (右列) XIAO BLEのD6はP0.30です */
+            = <&gpio0 4 GPIO_ACTIVE_HIGH>  /* D4 (左列: 7, 4, 1) */
+            , <&gpio0 5 GPIO_ACTIVE_HIGH>  /* D5 (中列: 8, 5, 2, 0) */
+            , <&gpio1 0 GPIO_ACTIVE_HIGH>  /* D6 (右列: 9, 6, 3) ← XIAO BLEのD6はここです */
             ;
 
         row-gpios
-            = <&gpio0 2  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* D0 (Row0: 789) */
-            , <&gpio0 3  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* D1 (Row1: 456) */
-            , <&gpio0 28 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* D2 (Row2: 123) */
+            = <&gpio0 2  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* D0 (Row0: 7, 8, 9) */
+            , <&gpio0 3  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* D1 (Row1: 4, 5, 6) */
+            , <&gpio0 28 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* D2 (Row2: 1, 2, 3) */
             , <&gpio0 29 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* D3 (Row3: 0) */
             ;
     };
