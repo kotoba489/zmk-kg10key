@@ -9,10 +9,10 @@
         default_layer {
             display-name = "Base";
             bindings = <
-&kp KP_N7  &kp KP_N8  &kp KP_N9
-&kp KP_N4  &kp KP_N5  &kp KP_N6
-&kp KP_N1  &kp KP_N2  &none
-&kp KP_N0
+                &kp KP_N7  &kp KP_N8  &kp KP_N9
+                &kp KP_N4  &kp KP_N5  &kp KP_N6
+                &kp KP_N1  &kp KP_N2  &kp KP_N3
+                &none      &kp KP_N0  &none
             >;
 
             sensor-bindings = <&inc_dec_kp PG_UP PG_DN>;
@@ -21,35 +21,33 @@
         layer_1 {
             display-name = "FCP1";
             bindings = <
-&kp LG(LC(PLUS))  &kp LS(Z)  &kp LG(MINUS)
-&kp LEFT_ARROW    &none      &kp RIGHT_ARROW
-&tog 2            &kp SPACE  &tog 0
-&kp LEFT_SHIFT
+                &kp LG(LC(PLUS))  &kp LS(Z)  &kp LG(MINUS)
+                &kp LEFT_ARROW    &none      &kp RIGHT_ARROW
+                &tog 2            &kp SPACE  &tog 0
+                &kp LEFT_SHIFT
             >;
 
             sensor-bindings = <&inc_dec_kp LS(LEFT) LS(RIGHT)>;
         };
 
         layer_2 {
+            display-name = "FCP2";
             bindings = <
-&trans  &trans  &trans
-&trans  &trans  &trans
-&tog 3  &tog 1  &tog 0
-&trans
+                &trans  &trans  &trans
+                &trans  &trans  &trans
+                &tog 3  &tog 1  &tog 0
+                &trans
             >;
-
-            label = "FCP2";
         };
 
         layer_3 {
+            display-name = "BT";
             bindings = <
-&bt BT_SEL 0  &bt BT_SEL 1  &bt BT_CLR_ALL
-&trans        &trans        &trans
-&trans        &trans        &tog 0
-&trans
+                &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_CLR_ALL
+                &trans        &trans        &trans
+                &trans        &trans        &tog 0
+                &trans
             >;
-
-            label = "BT";
         };
     };
 };
