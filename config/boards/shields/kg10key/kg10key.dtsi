@@ -24,16 +24,16 @@
         diode-direction = "col2row";
 
         col-gpios
-            = <&gpio0 4 GPIO_ACTIVE_HIGH>  /* D4 */
-            , <&gpio0 5 GPIO_ACTIVE_HIGH>  /* D5 */
-            , <&gpio1 0 GPIO_ACTIVE_HIGH>  /* D6 */
+            = <&gpio0 4 GPIO_ACTIVE_HIGH>  /* D4 (左列) */
+            , <&gpio0 5 GPIO_ACTIVE_HIGH>  /* D5 (中列) */
+            , <&gpio0 30 GPIO_ACTIVE_HIGH> /* D6 (右列) XIAO BLEのD6はP0.30です */
             ;
 
         row-gpios
-            = <&gpio0 3  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Row0 (旧D1位置) */
-            , <&gpio0 2  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Row1 (旧D0位置) */
-            , <&gpio0 28 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Row2 (旧D2位置) */
-            , <&gpio0 29 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Row3 (旧D3位置) */
+            = <&gpio0 2  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* D0 (Row0: 789) */
+            , <&gpio0 3  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* D1 (Row1: 456) */
+            , <&gpio0 28 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* D2 (Row2: 123) */
+            , <&gpio0 29 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* D3 (Row3: 0) */
             ;
     };
 };
