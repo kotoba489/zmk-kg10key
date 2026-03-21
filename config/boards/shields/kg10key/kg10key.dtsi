@@ -6,11 +6,11 @@
         zmk,matrix-transform = &default_transform;
     };
 
-    // エンコーダーの定義：物理ピン番号で直接指定
+    // エンコーダー：画像パッド 9 (ENCA) と 10 (ENCB)
     encoder: encoder {
         compatible = "alps,ec11";
-        a-gpios = <&xiao_d 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;  // D9
-        b-gpios = <&xiao_d 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; // D10
+        a-gpios = <&xiao_d 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        b-gpios = <&xiao_d 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         steps = <80>; 
     };
 
@@ -31,16 +31,16 @@
         diode-direction = "col2row";
 
         col-gpios
-            = <&xiao_d 4 GPIO_ACTIVE_HIGH>  /* COL0: D4 */
-            , <&xiao_d 5 GPIO_ACTIVE_HIGH>  /* COL1: D5 */
-            , <&gpio0 2 GPIO_ACTIVE_HIGH>   /* COL2: D11の実体 (これならエラーを回避できます) */
+            = <&xiao_d 5 GPIO_ACTIVE_HIGH>  /* COL0: パッド5 (COL0_L) */
+            , <&xiao_d 6 GPIO_ACTIVE_HIGH>  /* COL1: パッド6 (COL1_L) */
+            , <&xiao_d 11 GPIO_ACTIVE_HIGH> /* COL2: パッド11 (COL2_L) */
             ;
 
         row-gpios
-            = <&xiao_d 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Row0: D0 */
-            , <&xiao_d 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Row1: D1 */
-            , <&xiao_d 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Row2: D2 */
-            , <&xiao_d 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Row3: D3 */
+            = <&xiao_d 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Row0: パッド1 (ROW0_L) */
+            , <&xiao_d 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Row1: パッド2 (ROW1_L) */
+            , <&xiao_d 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Row2: パッド3 (ROW2_L) */
+            , <&xiao_d 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Row3: パッド4 (ROW3_L) */
             ;
     };
 };
