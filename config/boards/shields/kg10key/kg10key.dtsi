@@ -11,10 +11,10 @@
         columns = <3>;
         rows = <4>;
         map = <
-            RC(0,0) RC(0,1) RC(0,2)  /* 7, 8, 9 */
-            RC(1,0) RC(1,1) RC(1,2)  /* 4, 5, 6 */
-            RC(2,0) RC(2,1) RC(2,2)  /* 1, 2, 3 */
-                    RC(3,1)          /* 0       */
+            RC(0,0) RC(0,1) RC(0,2)  /* 7, 8, 9 (Row0) */
+            RC(1,0) RC(1,1) RC(1,2)  /* 4, 5, 6 (Row1) */
+            RC(2,0) RC(2,1) RC(2,2)  /* 1, 2, 3 (Row2) */
+                    RC(3,1)          /* 0       (Row3) */
         >;
     };
 
@@ -24,16 +24,16 @@
         diode-direction = "col2row";
 
         col-gpios
-            = <&gpio0 4 GPIO_ACTIVE_HIGH>  /* 左列 (D4) */
-            , <&gpio0 5 GPIO_ACTIVE_HIGH>  /* 中列 (D5) */
-            , <&gpio1 0 GPIO_ACTIVE_HIGH>  /* 右列 (D6相当) */
+            = <&gpio0 4 GPIO_ACTIVE_HIGH>  /* D4 */
+            , <&gpio0 5 GPIO_ACTIVE_HIGH>  /* D5 */
+            , <&gpio1 0 GPIO_ACTIVE_HIGH>  /* D6 */
             ;
 
         row-gpios
-            = <&gpio0 2  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Row0 (D0) */
-            , <&gpio0 28 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Row1 (D1) */
-            , <&gpio0 29 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Row2 (D2) */
-            , <&gpio0 3  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Row3 (D3) */
+            = <&gpio0 3  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Row0 (旧D1位置) */
+            , <&gpio0 2  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Row1 (旧D0位置) */
+            , <&gpio0 28 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Row2 (旧D2位置) */
+            , <&gpio0 29 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Row3 (旧D3位置) */
             ;
     };
 };
