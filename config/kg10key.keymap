@@ -26,7 +26,6 @@
                 &tog 2            &kp SPACE  &tog 0
                 &kp LEFT_SHIFT
             >;
-
             sensor-bindings = <&inc_dec_kp LS(LEFT) LS(RIGHT)>;
         };
 
