@@ -11,10 +11,10 @@
         columns = <3>;
         rows = <4>;
         map = <
-            RC(0,0) RC(0,1) RC(0,2)  /* 7, 8, 9 */
-            RC(1,0) RC(1,1) RC(1,2)  /* 4, 5, 6 */
-            RC(2,0) RC(2,1) RC(2,2)  /* 1, 2, 3 */
-                    RC(3,1)          /* 0       */
+            RC(0,0) RC(0,1) RC(0,2)  /* 7, 8, 9 (Row0) */
+            RC(1,0) RC(1,1) RC(1,2)  /* 4, 5, 6 (Row1) */
+            RC(2,0) RC(2,1) RC(2,2)  /* 1, 2, 3 (Row2) */
+                    RC(3,1)          /* 0       (Row3) */
         >;
     };
 
@@ -33,7 +33,7 @@
             = <&xiao_d 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             , <&xiao_d 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             , <&xiao_d 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&gpio0 29 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* D3の正体 P0.29 を直接指定 */
+            , <&gpio0 3  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* ここが 0 の運命を握る D3(P0.03) */
             ;
     };
 };
