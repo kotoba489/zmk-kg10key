@@ -6,6 +6,15 @@
         zmk,matrix-transform = &default_transform;
     };
 
+    // エンコーダーの定義（画像に基づき9と10を使用）
+    encoder: encoder {
+        compatible = "alps,ec11";
+        label = "ROTARY_ENCODER";
+        a-gpios = <&xiao_d 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; // パッド9
+        b-gpios = <&xiao_d 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; // パッド10
+        steps = <80>; 
+    };
+
     default_transform: matrix_transform {
         compatible = "zmk,matrix-transform";
         columns = <3>;
@@ -14,7 +23,7 @@
             RC(0,0) RC(0,1) RC(0,2)  /* 7, 8, 9 */
             RC(1,0) RC(1,1) RC(1,2)  /* 4, 5, 6 */
             RC(2,0) RC(2,1) RC(2,2)  /* 1, 2, 3 */
-            RC(3,0)                  /* 0 を「左列 (COL0)」に修正 */
+            RC(3,0)                  /* 0 */
         >;
     };
 
@@ -24,9 +33,9 @@
         diode-direction = "col2row";
 
         col-gpios
-            = <&xiao_d 4 GPIO_ACTIVE_HIGH>  /* COL0: 左列 */
-            , <&xiao_d 5 GPIO_ACTIVE_HIGH>  /* COL1: 中列 */
-            , <&xiao_d 10 GPIO_ACTIVE_HIGH> /* COL2: 右列 */
+            = <&xiao_d 4 GPIO_ACTIVE_HIGH>  /* COL0 */
+            , <&xiao_d 5 GPIO_ACTIVE_HIGH>  /* COL1 */
+            , <&xiao_d 11 GPIO_ACTIVE_HIGH> /* COL2 (画像通りのD11へ修正) */
             ;
 
         row-gpios
