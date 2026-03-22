@@ -1,45 +1,19 @@
 #include <behaviors.dtsi>
-#include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 
 / {
-    behaviors {
-        // 3をタップで数字の3、押しっぱなしでレイヤー1へ
-        // 判定時間を400ms(0.4秒)に設定
-        lt_3: layer_tap_3 {
-            compatible = "zmk,behavior-hold-tap";
-            label = "LAYER_TAP_3";
-            #binding-cells = <2>;
-            tapping-term-ms = <400>; 
-            flavor = "tap-preferred";
-            bindings = <&mo>, <&kp>; // 押している間だけ移動する &mo を使用
-        };
-    };
-
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
             display-name = "Base";
             bindings = <
-                &kp KP_N7     &kp KP_N8  &kp KP_N9
-                &kp KP_N4     &kp KP_N5  &kp KP_N6
-                &kp KP_N1     &kp KP_N2  &lt_3 1 KP_N3  // 3を長押しでLayer1
-                &kp KP_N0     &none      &none
+                &kp KP_N7  &kp KP_N8  &kp KP_N9
+                &kp KP_N4  &kp KP_N5  &kp KP_N6
+                &kp KP_N1  &kp KP_N2  &kp KP_N3
+                &kp KP_N0  &none      &none
             >;
             sensor-bindings = <&inc_dec_kp PG_UP PG_DN>;
-        };
-
-        video_layer {
-            display-name = "Video";
-            bindings = <
-                &none         &none      &none
-                &none         &none      &none
-                &none         &none      &none          // 長押し中はここが有効
-                &none         &none      &none
-            >;
-            // レイヤー1にいる時（3を押し続けている時）のエンコーダー設定
-            sensor-bindings = <&inc_dec_kp LS(RIGHT) LS(LEFT)>;
         };
     };
 };
