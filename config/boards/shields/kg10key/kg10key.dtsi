@@ -6,7 +6,8 @@
         zmk,matrix-transform = &default_transform;
     };
 
-    // エンコーダーの物理定義 (パッド9と10)
+    // エンコーダーの物理定義（パッド9と10）
+    // labelは警告が出るため削除しました
     left_encoder: encoder_left {
         compatible = "alps,ec11";
         a-gpios = <&xiao_d 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
@@ -14,7 +15,7 @@
         steps = <80>;
     };
 
-    // ZMKにエンコーダーを使うことを明示
+    // ZMKにエンコーダーを使うことを教える設定
     sensors: sensors {
         compatible = "zmk,keymap-sensors";
         sensors = <&left_encoder>;
@@ -40,7 +41,7 @@
         col-gpios
             = <&xiao_d 4 GPIO_ACTIVE_HIGH>
             , <&xiao_d 5 GPIO_ACTIVE_HIGH>
-            , <&xiao_d 11 GPIO_ACTIVE_HIGH> // COL2 (パッド11)
+            , <&gpio0 2 GPIO_ACTIVE_HIGH>  /* COL2: D11の正体 (これでエラーを回避！) */
             ;
 
         row-gpios
