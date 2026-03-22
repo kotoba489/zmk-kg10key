@@ -15,7 +15,7 @@
         compatible = "zmk,keymap";
 
         default_layer {
-            // Layer 0: 3番キーの位置を修正（レイヤー番号の前に & を追加）
+            // Layer 0: 3番キーの位置を修正
             bindings = <
                 &kp KP_N7    &kp KP_N8    &kp KP_N9
                 &kp KP_N4    &kp KP_N5    &kp KP_N6
