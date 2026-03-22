@@ -6,11 +6,10 @@
         zmk,matrix-transform = &default_transform;
     };
 
-    // エンコーダー：パッド 9 (P0.09) と 10 (P0.10)
     encoder: encoder {
         compatible = "alps,ec11";
-        a-gpios = <&gpio0 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; 
-        b-gpios = <&gpio0 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        a-gpios = <&xiao_d 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; 
+        b-gpios = <&xiao_d 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         steps = <80>; 
     };
 
@@ -22,7 +21,7 @@
             RC(0,0) RC(0,1) RC(0,2)  /* 7, 8, 9 */
             RC(1,0) RC(1,1) RC(1,2)  /* 4, 5, 6 */
             RC(2,0) RC(2,1) RC(2,2)  /* 1, 2, 3 */
-            RC(3,0)                  /* 0 (左下のCOL0) */
+            RC(3,0)                  /* 0 (COL0) */
         >;
     };
 
@@ -31,16 +30,16 @@
         diode-direction = "col2row";
 
         col-gpios
-            = <&gpio0 5 GPIO_ACTIVE_HIGH>  /* COL0: パッド5 (P0.05) */
-            , <&gpio1 0 GPIO_ACTIVE_HIGH>  /* COL1: パッド6 (P1.00) ※D6の実体 */
-            , <&gpio0 2 GPIO_ACTIVE_HIGH>  /* COL2: パッド11 (P0.02) ※D11の実体 */
+            = <&xiao_d 5 GPIO_ACTIVE_HIGH>  /* COL0: パッド5 */
+            , <&xiao_d 6 GPIO_ACTIVE_HIGH>  /* COL1: パッド6 */
+            , <&gpio0 2 GPIO_ACTIVE_HIGH>   /* COL2: パッド11 (エラー回避) */
             ;
 
         row-gpios
-            = <&gpio0 26 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Row0: パッド1 (P0.26) */
-            , <&gpio0 31 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Row1: パッド2 (P0.31) */
-            , <&gpio0 29 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Row2: パッド3 (P0.29) */
-            , <&gpio0 28 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Row3: パッド4 (P0.28) */
+            = <&xiao_d 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Row0: パッド1 */
+            , <&xiao_d 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Row1: パッド2 */
+            , <&xiao_d 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Row2: パッド3 */
+            , <&xiao_d 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Row3: パッド4 */
             ;
     };
 };
