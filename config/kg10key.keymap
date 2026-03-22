@@ -23,6 +23,11 @@
             bindings = <&to 2>;
             key-positions = <0 3>;
         };
+
+        del {
+            bindings = <&kp BACKSPACE>;
+            key-positions = <8 7>;
+        };
     };
 
     keymap {
