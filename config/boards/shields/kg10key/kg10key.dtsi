@@ -6,12 +6,19 @@
         zmk,matrix-transform = &default_transform;
     };
 
-    // エンコーダーは競合を避けるため一旦 D9 と D8 に設定（11は使いません）
-    encoder: encoder {
+    // エンコーダーの物理定義 (パッド9と10)
+    left_encoder: encoder_left {
         compatible = "alps,ec11";
-        a-gpios = <&xiao_d 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; 
-        b-gpios = <&xiao_d 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; 
-        steps = <80>; 
+        a-gpios = <&xiao_d 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        b-gpios = <&xiao_d 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        steps = <80>;
+    };
+
+    // ZMKにエンコーダーを使うことを明示
+    sensors: sensors {
+        compatible = "zmk,keymap-sensors";
+        sensors = <&left_encoder>;
+        triggers-per-rotation = <20>;
     };
 
     default_transform: matrix_transform {
@@ -22,7 +29,7 @@
             RC(0,0) RC(0,1) RC(0,2)  /* 7, 8, 9 */
             RC(1,0) RC(1,1) RC(1,2)  /* 4, 5, 6 */
             RC(2,0) RC(2,1) RC(2,2)  /* 1, 2, 3 */
-            RC(3,0)                  /* 0 */
+            RC(3,0)                  /* 0 (COL0) */
         >;
     };
 
@@ -33,7 +40,7 @@
         col-gpios
             = <&xiao_d 4 GPIO_ACTIVE_HIGH>
             , <&xiao_d 5 GPIO_ACTIVE_HIGH>
-            , <&xiao_d 10 GPIO_ACTIVE_HIGH> // パッド10を使用。11は使いません
+            , <&xiao_d 11 GPIO_ACTIVE_HIGH> // COL2 (パッド11)
             ;
 
         row-gpios
