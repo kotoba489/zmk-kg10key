@@ -11,19 +11,19 @@
             bindings = <
                 &kp KP_N7  &kp KP_N8  &kp KP_N9
                 &kp KP_N4  &kp KP_N5  &kp KP_N6
-                &kp KP_N1  &kp KP_N2  &tog 1      /* 3を押すとレイヤー1へ固定 */
+                &kp KP_N1  &kp KP_N2  &tog 1      /* 3を押すとレイヤー1へ */
                 &kp KP_N0  &none      &none
             >;
         };
 
-        // レイヤー1: 動画編集用（例）
+        // レイヤー1: 動画編集用
         nav_layer {
             display-name = "Video";
             bindings = <
-                &kp C      &kp V      &kp B      /* コピー、ペーストなど */
-                &kp J      &kp K      &kp L      /* JKLでの再生操作 */
-                &kp LEFT   &kp DOWN   &kp RIGHT  /* 矢印操作 */
-                &kp SPACE  &none      &tog 1      /* 3の位置を押すとレイヤー0へ戻る */
+                &kp C      &kp V      &kp B      /* 7, 8, 9 の位置 */
+                &kp J      &kp K      &kp L      /* 4, 5, 6 の位置 */
+                &kp LEFT   &kp DOWN   &tog 1      /* 1, 2, [3] の位置：ここで「3」を押すと戻る */
+                &kp SPACE  &none      &none      /* 0 の位置 */
             >;
         };
     };
