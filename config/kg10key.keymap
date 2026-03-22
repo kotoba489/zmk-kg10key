@@ -1,29 +1,36 @@
-#include <behaviors.dtsi>
-#include <dt-bindings/zmk/keys.h>
-
 / {
+    behaviors {
+        // 0.5秒（500ms）長押しでレイヤー切り替え、短押しで数字の3を入力する設定
+        lt_long: layer_tap_long {
+            compatible = "zmk,behavior-hold-tap";
+            label = "LAYER_TAP_LONG";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <500>;
+            bindings = <&mo>, <&kp>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
-        // レイヤー0: 通常のテンキー
         default_layer {
-            display-name = "Base";
+            // Layer 0: 3番キーの位置を &lt_long 1 KP_N3 に差し替え
             bindings = <
-                &kp KP_N7  &kp KP_N8  &kp KP_N9
-                &kp KP_N4  &kp KP_N5  &kp KP_N6
-                &kp KP_N1  &kp KP_N2  &tog 1      /* 3を押すとレイヤー1へ */
-                &kp KP_N0  &none      &none
+                &kp KP_N7    &kp KP_N8    &kp KP_N9
+                &kp KP_N4    &kp KP_N5    &kp KP_N6
+                &kp KP_N1    &kp KP_N2    &lt_long 1 KP_N3
+                &kp KP_N0
             >;
         };
 
-        // レイヤー1: 動画編集用
-        nav_layer {
-            display-name = "Video";
+        video_layer {
+            // Layer 1: 同じ位置に &tog 1 を配置し、一度入ったら固定して戻れるように設定
             bindings = <
-                &kp C      &kp V      &kp B      /* 7, 8, 9 の位置 */
-                &kp J      &kp K      &kp L      /* 4, 5, 6 の位置 */
-                &kp LEFT   &kp DOWN   &tog 1      /* 1, 2, [3] の位置：ここで「3」を押すと戻る */
-                &kp SPACE  &none      &none      /* 0 の位置 */
+                &trans       &trans       &trans
+                &trans       &trans       &trans
+                &trans       &trans       &tog 1
+                &trans
             >;
         };
     };
