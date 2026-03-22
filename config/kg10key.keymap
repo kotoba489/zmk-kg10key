@@ -20,17 +20,17 @@
                 &kp KP_N7    &kp KP_N8    &kp KP_N9
                 &kp KP_N4    &kp KP_N5    &kp KP_N6
                 &kp KP_N1    &kp KP_N2    &lt_long 1 KP_N3
-                &kp KP_N0
+                &kp KP_N0    &none        &none
             >;
         };
 
         video_layer {
-            // Layer 1: 同じ位置に &tog 1 を配置し、一度入ったら固定して戻れるように設定
+            // Layer 1: 同じ位置に &tog 1 を配置
             bindings = <
                 &trans       &trans       &trans
                 &trans       &trans       &trans
                 &trans       &trans       &tog 1
-                &trans
+                &trans       &none        &none
             >;
         };
     };
