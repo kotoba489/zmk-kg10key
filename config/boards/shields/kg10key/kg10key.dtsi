@@ -6,7 +6,7 @@
         zmk,matrix-transform = &default_transform;
     };
 
-    // エンコーダーは定義だけ残し、キーと干渉しないピンに設定
+    // エンコーダーは一旦「無効」なピンに逃がし、キー入力を優先します
     encoder: encoder {
         compatible = "alps,ec11";
         a-gpios = <&xiao_d 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; 
@@ -31,16 +31,16 @@
         diode-direction = "col2row";
 
         col-gpios
-            = <&xiao_d 4 GPIO_ACTIVE_HIGH>
-            , <&xiao_d 5 GPIO_ACTIVE_HIGH>
-            , <&xiao_d 10 GPIO_ACTIVE_HIGH>
+            = <&xiao_d 5 GPIO_ACTIVE_HIGH>  /* COL0: パッド5 */
+            , <&xiao_d 6 GPIO_ACTIVE_HIGH>  /* COL1: パッド6 */
+            , <&xiao_d 11 GPIO_ACTIVE_HIGH> /* COL2: パッド11 */
             ;
 
         row-gpios
-            = <&xiao_d 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&xiao_d 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&xiao_d 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&xiao_d 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            = <&xiao_d 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Row0: パッド1 */
+            , <&xiao_d 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Row1: パッド2 */
+            , <&xiao_d 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Row2: パッド3 */
+            , <&xiao_d 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Row3: パッド4 */
             ;
     };
 };
