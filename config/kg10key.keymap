@@ -9,14 +9,19 @@
     combos {
         compatible = "zmk,combos";
 
-        L1 {
-            bindings = <&tog 1>;
+        L0 {
+            bindings = <&to 0>;
             key-positions = <0 1>;
         };
 
-        L2 {
-            bindings = <&tog 2>;
+        L1 {
+            bindings = <&to 1>;
             key-positions = <1 2>;
+        };
+
+        L2 {
+            bindings = <&to 2>;
+            key-positions = <0 3>;
         };
     };
 
