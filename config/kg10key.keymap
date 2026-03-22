@@ -1,3 +1,7 @@
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+
 / {
     behaviors {
         // 0.5秒（500ms）長押しでレイヤー切り替え、短押しで数字の3を入力する設定
@@ -15,7 +19,7 @@
         compatible = "zmk,keymap";
 
         default_layer {
-            // Layer 0: 3番キーの位置を修正
+            // Layer 0: 3番キーの位置を &lt_long 1 KP_N3 に設定
             bindings = <
                 &kp KP_N7    &kp KP_N8    &kp KP_N9
                 &kp KP_N4    &kp KP_N5    &kp KP_N6
@@ -25,7 +29,7 @@
         };
 
         video_layer {
-            // Layer 1: 同じ位置に &tog 1 を配置
+            // Layer 1: 戻るためのトグルスイッチを同じ位置に配置
             bindings = <
                 &trans       &trans       &trans
                 &trans       &trans       &trans
