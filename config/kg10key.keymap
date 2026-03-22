@@ -15,12 +15,12 @@
         compatible = "zmk,keymap";
 
         default_layer {
-            // Layer 0: 3番キーの位置を &lt_long 1 KP_N3 に差し替え
+            // Layer 0: 3番キーの位置を修正（レイヤー番号の前に & を追加）
             bindings = <
                 &kp KP_N7    &kp KP_N8    &kp KP_N9
                 &kp KP_N4    &kp KP_N5    &kp KP_N6
                 &kp KP_N1    &kp KP_N2    &lt_long 1 KP_N3
-                &kp KP_N0    &none        &none
+                &kp KP_N0
             >;
         };
 
@@ -30,7 +30,7 @@
                 &trans       &trans       &trans
                 &trans       &trans       &trans
                 &trans       &trans       &tog 1
-                &trans       &none        &none
+                &trans
             >;
         };
     };
