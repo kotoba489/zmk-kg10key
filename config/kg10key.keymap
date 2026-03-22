@@ -4,12 +4,12 @@
 
 / {
     behaviors {
-        // 0.5秒長押しでレイヤー1をトグル(ON)する設定
+        // 0.5秒（500ms）長押しでレイヤー1をトグル(ON/OFF)する設定
         lt_3: layer_tap_3 {
             compatible = "zmk,behavior-hold-tap";
             label = "LAYER_TAP_3";
             #binding-cells = <2>;
-            tapping-term-ms = <500>; // 0.5秒
+            tapping-term-ms = <500>; 
             flavor = "tap-preferred";
             bindings = <&tog>, <&kp>;
         };
@@ -18,29 +18,29 @@
     keymap {
         compatible = "zmk,keymap";
 
-        // レイヤー0：数字入力
+        // レイヤー0：通常の数字入力
         default_layer {
             display-name = "Base";
             bindings = <
                 &kp KP_N7     &kp KP_N8  &kp KP_N9
                 &kp KP_N4     &kp KP_N5  &kp KP_N6
-                &kp KP_N1     &kp KP_N2  &lt_3 1 KP_N3  // 0.5秒押しでVideoモードへ
+                &kp KP_N1     &kp KP_N2  &lt_3 1 KP_N3  // 3を0.5秒長押しでL1へ
                 &kp KP_N0     &none      &none
             >;
-            // 通常時のエンコーダー（スクロール）
+            // レイヤー0の時はスクロール
             sensor-bindings = <&inc_dec_kp PG_UP PG_DN>;
         };
 
-        // レイヤー1：動画編集モード（Final Cut Pro）
+        // レイヤー1：動画編集モード（ここが定義されていないと移動しません）
         video_layer {
             display-name = "Video";
             bindings = <
                 &trans        &trans     &trans
                 &trans        &trans     &trans
-                &trans        &trans     &tog 1         // もう一度押せばBaseに戻る
+                &trans        &trans     &tog 1         // 3の位置を叩くとBaseに戻る
                 &trans        &trans     &trans
             >;
-            // 動画編集時のエンコーダー（10フレーム移動）
+            // レイヤー1の時は10フレーム移動
             sensor-bindings = <&inc_dec_kp LS(RIGHT) LS(LEFT)>;
         };
     };
