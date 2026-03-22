@@ -13,6 +13,7 @@
                 &kp KP_N1  &kp KP_N2  &kp KP_N3
                 &kp KP_N0  &none      &none
             >;
+            // レイヤー0でのエンコーダー動作：スクロール
             sensor-bindings = <&inc_dec_kp PG_UP PG_DN>;
         };
     };
