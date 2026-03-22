@@ -11,30 +11,20 @@
             bindings = <
                 &kp KP_N7  &kp KP_N8  &kp KP_N9
                 &kp KP_N4  &kp KP_N5  &kp KP_N6
-                &kp KP_N1  &kp KP_N2  &lt 1 KP_N3  // 3を長押しでLayer1、タップで3
+                &kp KP_N1  &kp KP_N2  &lt 1 KP_N3  /* 「3」長押しでレイヤー1へ */
                 &kp KP_N0  &none      &none
             >;
         };
 
-        // レイヤー1: 動画編集用（例としてショートカットを配置）
+        // レイヤー1: 動画編集用（例）
         nav_layer {
             display-name = "Video";
             bindings = <
-                &kp C      &kp V      &kp B
-                &kp J      &kp K      &kp L
-                &kp LEFT   &kp DOWN   &kp RIGHT
-                &kp SPACE  &none      &none
+                &kp C      &kp V      &kp B      /* コピー、ペーストなど */
+                &kp J      &kp K      &kp L      /* 再生コントロール */
+                &kp LEFT   &kp DOWN   &kp RIGHT  /* タイムライン操作 */
+                &kp SPACE  &none      &none      /* 再生/一時停止 */
             >;
-        };
-    };
-};
-                &kp KP_N7  &kp KP_N8  &kp KP_N9
-                &kp KP_N4  &kp KP_N5  &kp KP_N6
-                &kp KP_N1  &kp KP_N2  &kp KP_N3
-                &kp KP_N0  &none      &none
-            >;
-            // ツマミを回すと PageUp / PageDown する設定
-            sensor-bindings = <&inc_dec_kp PG_UP PG_DN>;
         };
     };
 };
