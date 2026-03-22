@@ -4,43 +4,41 @@
 
 / {
     behaviors {
-        // 0.5秒（500ms）長押しでレイヤー1をトグル(ON/OFF)する設定
+        // 「3」をタップで数字の3、押しっぱなしでレイヤー1へ
+        // 押し込んでいる間だけレイヤー1になります（指を離すと数字に戻る）
         lt_3: layer_tap_3 {
             compatible = "zmk,behavior-hold-tap";
             label = "LAYER_TAP_3";
             #binding-cells = <2>;
-            tapping-term-ms = <500>; 
-            flavor = "tap-preferred";
-            bindings = <&tog>, <&kp>;
+            tapping-term-ms = <300>; // 0.3秒（少し短くして反応を良くします）
+            flavor = "hold-preferred";
+            bindings = <&mo>, <&kp>; // &tog を &mo に変更
         };
     };
 
     keymap {
         compatible = "zmk,keymap";
 
-        // レイヤー0：通常の数字入力
         default_layer {
             display-name = "Base";
             bindings = <
                 &kp KP_N7     &kp KP_N8  &kp KP_N9
                 &kp KP_N4     &kp KP_N5  &kp KP_N6
-                &kp KP_N1     &kp KP_N2  &lt_3 1 KP_N3  // 3を0.5秒長押しでL1へ
+                &kp KP_N1     &kp KP_N2  &lt_3 1 KP_N3  // 押しっぱなしでL1
                 &kp KP_N0     &none      &none
             >;
-            // レイヤー0の時はスクロール
             sensor-bindings = <&inc_dec_kp PG_UP PG_DN>;
         };
 
-        // レイヤー1：動画編集モード（ここが定義されていないと移動しません）
         video_layer {
             display-name = "Video";
             bindings = <
                 &trans        &trans     &trans
                 &trans        &trans     &trans
-                &trans        &trans     &tog 1         // 3の位置を叩くとBaseに戻る
+                &trans        &trans     &trans         // 押しっぱなしの間だけ有効なので &trans でOK
                 &trans        &trans     &trans
             >;
-            // レイヤー1の時は10フレーム移動
+            // レイヤー1のエンコーダー挙動
             sensor-bindings = <&inc_dec_kp LS(RIGHT) LS(LEFT)>;
         };
     };
