@@ -1,46 +1,45 @@
-#include <dt-bindings/zmk/matrix_transform.h>
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/keys.h>
 
 / {
-    chosen {
-        zmk,kscan = &kscan0;
-        zmk,matrix-transform = &default_transform;
+    behaviors {
+        // 0.5秒（500ms）長押しでレイヤー1をトグル(ON/OFF)する設定
+        lt_3: layer_tap_3 {
+            compatible = "zmk,behavior-hold-tap";
+            label = "LAYER_TAP_3";
+            #binding-cells = <2>;
+            tapping-term-ms = <500>; 
+            flavor = "tap-preferred";
+            bindings = <&tog>, <&kp>;
+        };
     };
 
-    // エンコーダーは一旦「定義だけ」して、干渉しないピン(9)に逃がします
-    encoder: encoder {
-        compatible = "alps,ec11";
-        a-gpios = <&xiao_d 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; 
-        b-gpios = <&xiao_d 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; // 10と干渉させないため8へ
-        steps = <80>; 
-    };
+    keymap {
+        compatible = "zmk,keymap";
 
-    default_transform: matrix_transform {
-        compatible = "zmk,matrix-transform";
-        columns = <3>;
-        rows = <4>;
-        map = <
-            RC(0,0) RC(0,1) RC(0,2)  /* 7, 8, 9 */
-            RC(1,0) RC(1,1) RC(1,2)  /* 4, 5, 6 */
-            RC(2,0) RC(2,1) RC(2,2)  /* 1, 2, 3 */
-            RC(3,0)                  /* 0 */
-        >;
-    };
+        // レイヤー0：数字入力
+        default_layer {
+            display-name = "Base";
+            bindings = <
+                &kp KP_N7     &kp KP_N8  &kp KP_N9
+                &kp KP_N4     &kp KP_N5  &kp KP_N6
+                &kp KP_N1     &kp KP_N2  &lt_3 1 KP_N3  // 3を0.5秒長押しでL1へ
+                &kp KP_N0     &none      &none
+            >;
+            sensor-bindings = <&inc_dec_kp PG_UP PG_DN>;
+        };
 
-    kscan0: kscan {
-        compatible = "zmk,kscan-gpio-matrix";
-        diode-direction = "col2row";
-
-        col-gpios
-            = <&xiao_d 4 GPIO_ACTIVE_HIGH>  /* COL0: 以前成功したピン */
-            , <&xiao_d 5 GPIO_ACTIVE_HIGH>  /* COL1: 以前成功したピン */
-            , <&xiao_d 10 GPIO_ACTIVE_HIGH> /* COL2: 以前成功したピン */
-            ;
-
-        row-gpios
-            = <&xiao_d 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Row0 */
-            , <&xiao_d 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Row1 */
-            , <&xiao_d 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Row2 */
-            , <&xiao_d 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> /* Row3 */
-            ;
+        // レイヤー1：動画編集モード（一旦すべてのキーを透過させる）
+        video_layer {
+            display-name = "Video";
+            bindings = <
+                &trans        &trans     &trans
+                &trans        &trans     &trans
+                &trans        &trans     &tog 1         // 3の位置を叩いて戻る
+                &trans        &trans     &trans
+            >;
+            sensor-bindings = <&inc_dec_kp LS(RIGHT) LS(LEFT)>;
+        };
     };
 };
