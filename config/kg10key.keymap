@@ -38,9 +38,9 @@
             // Layer 1: 同じ位置に &tog 1 を配置し、叩くことでレイヤー0へ戻る
 
             bindings = <
-&trans  &trans  &trans
-&trans  &trans  &trans
-&trans  &trans  &tog 1
+&trans    &trans  &trans
+&kp LEFT  &trans  &kp RIGHT
+&trans    &trans  &tog 1
 &trans
             >;
         };
