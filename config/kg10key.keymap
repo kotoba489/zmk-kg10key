@@ -27,6 +27,8 @@
         del {
             bindings = <&kp BACKSPACE>;
             key-positions = <8 7>;
+            timeout-ms = <60>;
+            require-prior-idle-ms = <150>;
         };
     };
 
