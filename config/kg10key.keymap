@@ -12,14 +12,14 @@
 
         L0 {
             bindings = <&to 0>;
-            key-positions = <0 1>;
+            key-positions = <1 2>;
             timeout-ms = <80>;
             require-prior-idle-ms = <150>;
         };
 
         L1 {
             bindings = <&to 1>;
-            key-positions = <1 2>;
+            key-positions = <1 0>;
             timeout-ms = <80>;
             require-prior-idle-ms = <150>;
         };
