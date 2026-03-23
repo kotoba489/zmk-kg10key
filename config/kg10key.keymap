@@ -13,28 +13,28 @@
         L0 {
             bindings = <&to 0>;
             key-positions = <0 1>;
-            timeout-ms = <50>;
+            timeout-ms = <80>;
             require-prior-idle-ms = <150>;
         };
 
         L1 {
             bindings = <&to 1>;
             key-positions = <1 2>;
-            timeout-ms = <50>;
+            timeout-ms = <80>;
             require-prior-idle-ms = <150>;
         };
 
         L2 {
             bindings = <&to 2>;
             key-positions = <0 3>;
-            timeout-ms = <50>;
+            timeout-ms = <80>;
             require-prior-idle-ms = <150>;
         };
 
         del {
             bindings = <&kp BACKSPACE>;
             key-positions = <8 7>;
-            timeout-ms = <50>;
+            timeout-ms = <80>;
             require-prior-idle-ms = <150>;
         };
     };
