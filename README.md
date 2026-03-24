@@ -1,5 +1,4 @@
-<img src="https://github.com/user-attachments/assets/f28692e0-8d85-42c1-87b8-533b74c5d881" width="60%">
-
+<img src="https://github.com/user-attachments/assets/db6fac6b-4ff3-4bb2-a54c-31e15b261753" width="50%">
 # kg10key (Custom Macro Pad)
 
 Bambu Lab A1 miniで出力したケースと、カスタム基板（PCB）を組み合わせた自作テンキー/マクロパッド・プロジェクトです。
