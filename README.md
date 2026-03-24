@@ -1,4 +1,4 @@
-<![Image](https://github.com/user-attachments/assets/db6fac6b-4ff3-4bb2-a54c-31e15b261753) width="30%">
+<img src="https://github.com/user-attachments/assets/db6fac6b-4ff3-4bb2-a54c-31e15b261753" width="30%">
 
 # kg10key (Custom Macro Pad)
 
