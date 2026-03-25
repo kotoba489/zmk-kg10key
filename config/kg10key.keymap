@@ -67,9 +67,9 @@
         BT_layer02 {
             bindings = <
 &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_CLR_ALL
-&none         &trans        &trans
-&trans        &trans        &none
-&trans
+&none         &none         &none
+&none         &none         &none
+&none
             >;
         };
     };
