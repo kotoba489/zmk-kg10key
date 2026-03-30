@@ -64,6 +64,8 @@ L0 (7+8), L1 (8+9), L2 (7+4) の配置で各モードに瞬時にアクセス。
 
 7+8 (2+3) の同時押しに Backspace を割り当て、指の移動距離を短縮。
 
-## ライセンス
 
-[MIT License](LICENSE)
+　
+## MIT License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
