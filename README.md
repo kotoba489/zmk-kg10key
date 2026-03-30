@@ -69,4 +69,4 @@ L0 (7+8), L1 (8+9), L2 (7+4) の配置で各モードに瞬時にアクセス。
 　
 ## MIT License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License.
