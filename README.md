@@ -1,8 +1,7 @@
 <img src="https://github.com/user-attachments/assets/db6fac6b-4ff3-4bb2-a54c-31e15b261753" width="50%">
 
 <img src="https://github.com/user-attachments/assets/3bb4d76f-23c7-4ac4-8c3b-9a6cd87815e0" width="70%">
-
-レイヤー移動はコンボで多様
+レイヤー移動はコンボで対応
 
 # kg10key (Ten Key & Macro Pad)
 
