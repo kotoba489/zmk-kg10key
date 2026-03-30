@@ -2,6 +2,8 @@
 
 <img src="https://github.com/user-attachments/assets/3bb4d76f-23c7-4ac4-8c3b-9a6cd87815e0" width="70%">
 
+レイヤー移動はコンボで対応
+
 # kg10key (Ten Key & Macro Pad)
 
 Bambu Lab A1 miniで出力したケースと、カスタム基板（PCB）を組み合わせた自作テンキー/マクロパッド・プロジェクトです。
