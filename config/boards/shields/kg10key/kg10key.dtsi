@@ -30,4 +30,21 @@
             , <&xiao_d 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             ;
     };
+
+    // --- 追加：ロータリーエンコーダー本体の定義 ---
+    encoder: encoder {
+        compatible = "alps,ec11";
+        label = "MAIN_ENCODER";
+        // XIAOのD6とD7を使用。GPIO_PULL_UPが「抵抗」の代わりをします。
+        a-gpios = <&xiao_d 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        b-gpios = <&xiao_d 7 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        steps = <80>;
+    };
+
+    // エンコーダーをセンサーとして登録
+    sensors {
+        compatible = "zmk,keymap-sensors";
+        sensors = <&encoder>;
+        triggers-per-rotation = <20>;
+    };
 };
