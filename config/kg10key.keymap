@@ -4,7 +4,16 @@
 
 / {
     behaviors {
-        // 0.5秒（500ms）長押しでレイヤー1に完全移行（Toggle）、短押しで数字の3を入力
+        // 0.5秒（500ms）長押しでレイヤー1に完全移行（TO 1）、短押しで数字の3を入力
+        td_layer: tap_dance_mod {
+            compatible = "zmk,behavior-hold-tap";
+            label = "LAYER_HOLD_TAP";
+            #binding-cells = <2>;
+            tapping-term-ms = <500>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+            bindings = <&to>, <&kp>;
+        };
     };
 
     combos {
@@ -43,25 +52,27 @@
         compatible = "zmk,keymap";
 
         BASE_layer00 {
-            // Layer 0: 3番キーを 0.5秒長押しでレイヤー1へ「固定切り替え」
-
             bindings = <
 &kp KP_N7  &kp KP_N8  &kp KP_N9
 &kp KP_N4  &kp KP_N5  &kp KP_N6
-&kp KP_N1  &kp KP_N2  &kp KP_NUMBER_3
+&kp KP_N1  &kp KP_N2  &td_layer 1 KP_NUMBER_3
 &kp KP_N0
             >;
+
+            // エンコーダーの動作（レイヤー0：音量調整）
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
         VIDEO_layer01 {
-            // Layer 1: 同じ位置に &tog 1 を配置し、叩くことでレイヤー0へ戻る
-
             bindings = <
 &kp LG(PLUS)  &kp LS(Z)  &kp LG(MINUS)
 &kp LEFT      &trans     &kp RIGHT
-&trans        &kp SPACE  &none
+&trans        &kp SPACE  &to 0
 &kp LSHFT
             >;
+
+            // エンコーダーの動作（レイヤー1：スクロールなど、必要に応じて変更可）
+            sensor-bindings = <&inc_dec_kp PG_UP PG_DN>;
         };
 
         BT_layer02 {
@@ -71,6 +82,8 @@
 &none         &none         &none
 &none
             >;
+            
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
     };
 };
