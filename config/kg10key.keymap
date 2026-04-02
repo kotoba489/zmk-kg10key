@@ -59,7 +59,7 @@
 &kp KP_N0
             >;
 
-            // エンコーダーの動作（レイヤー0：音量調整）
+            // レイヤー0：右回しで音量アップ、左回しで音量ダウン
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
@@ -71,8 +71,9 @@
 &kp LSHFT
             >;
 
-            // エンコーダーの動作（レイヤー1：スクロールなど、必要に応じて変更可）
-            sensor-bindings = <&inc_dec_kp PG_UP PG_DN>;
+            // レイヤー1：右回しで右矢印（早送り）、左回しで左矢印（巻き戻し）
+            // 動画視聴や編集に便利な設定に変更しました
+            sensor-bindings = <&inc_dec_kp RIGHT LEFT>;
         };
 
         BT_layer02 {
@@ -83,6 +84,7 @@
 &none
             >;
             
+            // Bluetoothレイヤーでも誤作動防止のため音量調整に設定
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
     };
